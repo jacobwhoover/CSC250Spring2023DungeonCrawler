@@ -8,67 +8,67 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     public GameObject northExit, southExit, eastExit, westExit;
     public float movementSpeed = 40.0f;
-
+    private bool isMoving;
 
     // Start is called before the first frame update
     void Start()
     {
         this.rb = this.GetComponent<Rigidbody>();
-        print(MasterData.count);
         MasterData md = new MasterData();
-     
+        this.isMoving = false;
+        print(MasterData.whereDidIComeFrom);
+
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Exit"))
+        {
+            if (other.gameObject == this.northExit)
+            {
+                MasterData.whereDidIComeFrom = "north";
+                this.rb.AddForce(this.westExit.transform.position * movementSpeed);
+            }
+            else if (other.gameObject == this.southExit)
+            {
+                MasterData.whereDidIComeFrom = "south";
+            }
+            else if (other.gameObject == this.eastExit)
+            {
+                MasterData.whereDidIComeFrom = "east";
+            }
+            else if (other.gameObject == this.westExit)
+            {
+                MasterData.whereDidIComeFrom = "west";
+            }
+
+            SceneManager.LoadScene("DungeonRoom");
+
+        }
+    }
     // Update is called once per frame
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && this.isMoving == false)
         {
-           StartCoroutine(MoveitN());
+            this.rb.AddForce(this.northExit.transform.position * movementSpeed);
+            this.isMoving = true;
         }
-        if(Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && this.isMoving == false)
         {
-            StartCoroutine (MoveitS());
+            this.rb.AddForce(this.westExit.transform.position * movementSpeed);
+            this.isMoving = true;
         }
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) && this.isMoving == false)
         {
-            StartCoroutine (MoveitE());
+            this.rb.AddForce(this.eastExit.transform.position * movementSpeed);
+            this.isMoving = true;
         }
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow) && this.isMoving == false)
         {
-           StartCoroutine (MoveitW());
+            this.rb.AddForce(this.southExit.transform.position * movementSpeed);
+            this.isMoving = true;
         }
-            
-    }
 
-    private IEnumerator MoveitN()
-    {
-        this.rb.AddForce(this.northExit.transform.position * movementSpeed);
-        yield return new WaitForSeconds((float)1.25);
-        MasterData.count++;
-        SceneManager.LoadScene("DungeonRoom");
-    }
-    private IEnumerator MoveitE()
-    {
-        this.rb.AddForce(this.eastExit.transform.position * movementSpeed);
-        yield return new WaitForSeconds((float)1.25);
-        MasterData.count++;
-        SceneManager.LoadScene("DungeonRoom");
-    }
-
-    private IEnumerator MoveitS() 
-    {
-        this.rb.AddForce(this.southExit.transform.position * movementSpeed);
-        yield return new WaitForSeconds((float)1.25);
-        MasterData.count++;
-        SceneManager.LoadScene("DungeonRoom");
-    }
-
-    private IEnumerator MoveitW() 
-    {
-        this.rb.AddForce(this.westExit.transform.position * movementSpeed);
-        yield return new WaitForSeconds((float)1.25);
-        MasterData.count++;
-        SceneManager.LoadScene("DungeonRoom");
     }
 }
