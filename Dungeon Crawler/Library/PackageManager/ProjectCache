@@ -6,8 +6,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638160650431789947
-    m_Hash: 1411460284
+      ticks: 638170190702613327
+    m_Hash: 2465031950
   m_LockFileStatus:
     m_FilePath: C:/Users/jacob/Documents/GitHub/CSC250Spring2023DungeonCrawler/Dungeon
       Crawler/Packages/packages-lock.json
@@ -15,8 +15,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638160650431789947
-    m_Hash: 4090777657
+      ticks: 638170190702873341
+    m_Hash: 3333413975
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -110,16 +110,18 @@ m_ResolvedPackages:
     - 2.0.0-preview.22
     - 2.0.0
     - 2.0.1
+    - 2.0.3
     - 2.1.0-preview.3
     - 2.1.0-preview.5
     - 2.1.0-preview.6
     compatible:
     - 2.0.0
     - 2.0.1
+    - 2.0.3
     - 2.1.0-preview.3
     - 2.1.0-preview.5
     - 2.1.0-preview.6
-    verified: 2.0.1
+    verified: 2.0.3
   dependencies: []
   resolvedDependencies: []
   keywords:
