@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
                 MasterData.whereDidIComeFrom = "west";
             }
             MasterData.isExiting = false;
-            SceneManager.LoadScene("DungeonRoom");
+            SceneManager.LoadScene("D2");
         }
         else if(other.gameObject.CompareTag("Exit") && !MasterData.isExiting)
         {
